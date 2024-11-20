@@ -1,12 +1,12 @@
-const navItems = document.querySelectorAll(".nav-item");
-const mainNav = document.querySelector(".nav-container");
+// Seleciona os elementos necessários
+const whatsappChat = document.getElementById("whatsapp-chat");
+const whatsappFloat = document.getElementById("whatsapp-float");
+const closeBtn = document.getElementById("close-btn");
 
-navItems.forEach((item) => {
-  item.addEventListener("mouseenter", () => {
-    mainNav.style.borderColor = "#364137";
-  });
+whatsappFloat.addEventListener("click", () => {
+  whatsappChat.classList.add("show"); // Adiciona classe para exibir com animação
+});
 
-  item.addEventListener("mouseleave", () => {
-    mainNav.style.borderColor = "transparent";
-  });
+closeBtn.addEventListener("click", () => {
+  whatsappChat.classList.remove("show"); // Remove a classe para ocultar
 });
