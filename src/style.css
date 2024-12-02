@@ -1,0 +1,110 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --border-radius: 0.5rem;
+  --padding-inline: 2.5rem;
+  --padding-block: 1rem;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.6;
+  color: #1d2321;
+  background-color: #ffffff;
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
+}
+
+/* global *******************************
+  ****************************************/
+
+.container {
+  max-width: 1440px;
+  width: 95vw;
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 3.815rem;
+}
+
+h2 {
+  font-size: 3.052rem;
+}
+
+h3 {
+  font-size: 2.441rem;
+}
+
+h4 {
+  font-size: 1.953rem;
+}
+
+h5 {
+  font-size: 1.563rem;
+}
+
+small {
+  font-size: 0.8rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 1.1em;
+}
+
+section {
+  padding-block: 10rem;
+}
+
+.section-title {
+  font-weight: bolder;
+  text-transform: uppercase;
+  position: relative;
+  width: max-content;
+  margin: 0 auto;
+  margin-bottom: 8rem;
+}
+
+.section-title::after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 70%;
+  height: 0.8rem;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+@media screen and (max-width: 500px) {
+  .section-title {
+    font-size: 2.1rem;
+  }
+}
