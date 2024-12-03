@@ -8,7 +8,8 @@ import Segmentos from '../components/main/segmentos/Segmentos.vue';
 import SobreNos from '../components/main/sobre-nos/SobreNos.vue';
 import FooterPage from '../components/footer/Footer.vue';
 import Whats from '../components/whats/Whats.vue';
-import Contato from '../components/main/contato/Contato.vue';
+import FaleConosco from '../components/main/contato/FaleConosco.vue';
+
 
 </script>
 
@@ -21,7 +22,7 @@ import Contato from '../components/main/contato/Contato.vue';
         <Funcionalidades />
         <SegmentoFrase />
         <Segmentos />
-        <Contato />
+        <FaleConosco />
         <SobreNos />
     </main>
 

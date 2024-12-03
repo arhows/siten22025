@@ -14,7 +14,7 @@ defineEmits(["toogleForm"])
         <div class="whatsapp-message">
             <p>Nós podemos te ajudar!</p>
         </div>
-        <a href="https://wa.me/5516992711544?text=Gostaria de falar com um especialista para conhecer mais sobre o ERP"
+        <a href="https://wa.me/5516999886837?text=Gostaria de falar com um especialista para conhecer mais sobre o ERP"
             target="_blank" class="whatsapp-button">
             <span>📞 Envie uma mensagem</span>
         </a>

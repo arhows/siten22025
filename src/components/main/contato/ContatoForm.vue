@@ -1,10 +1,10 @@
-<script setup>
+<script setup type="ts">
 import { reactive } from 'vue';
 import { useToast } from 'vue-toastification';
 
 const toast = useToast();
 
-const BASE_URL = 'https://api-contact-lead-site.onrender.com/api/site'
+const BASE_URL = 'https://n2pay.com.br/n2hook/api/site'
 
 const initial = reactive({
     nome: "",
@@ -19,6 +19,8 @@ const clearFormFields = () => {
     initial.telefone = '';
     initial.historico = '';
 }
+
+const emit = defineEmits(['handle-show-agradecimento']);
 
 const handleSubmit = async () => {
     const newContactForm = {
@@ -38,20 +40,21 @@ const handleSubmit = async () => {
 
     try {
         const response = await fetch(BASE_URL, options);
+        const data = await response.json();
 
         if (!response.ok) {
-            toast.error(response.statusText);
+            toast.error(data.message);
             return;
         }
 
         if (response.status !== 200) {
-            toast.error(response.statusText);
+            toast.error(data.message);
             return;
         }
 
-        const data = await response.json();
+        console.log("envio com sucesso, retorno: ", data);
 
-        toast.success("Contato enviado com sucesso!");
+        emit('handle-show-agradecimento');
 
         clearFormFields();
 
@@ -65,43 +68,35 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-    <section id="contato" class="fale-conosco">
-        <div class="container">
-            <form class="fale-com-especialista__contato" @submit.prevent="handleSubmit">
-                <div class="input-group">
-                    <h2>Fale com a nossa equipe</h2>
-                </div>
-
-                <div class="input-group">
-                    <label for="nome">Nome</label>
-                    <input type="text" name="nome" id="nome" v-model="initial.nome" required />
-                </div>
-                <div class="input-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email" v-model="initial.email" required />
-                </div>
-                <div class="input-group">
-                    <label for="telefone">Telefone</label>
-                    <input type="tel" name="telefone" id="telefone" v-model="initial.telefone" required />
-                </div>
-                <div class="input-group">
-                    <label for="historico">Fale um pouco sobre o seu momento atual</label>
-                    <textarea name="historico" id="historico" v-model="initial.historico"></textarea>
-                </div>
-                <div class="input-group">
-                    <button type="submit">Ligamos para você</button>
-                </div>
-            </form>
+    <form class="fale-com-especialista__contato" @submit.prevent="handleSubmit">
+        <div class="input-group">
+            <h2>Fale com a nossa equipe</h2>
         </div>
 
-    </section>
+        <div class="input-group">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" v-model="initial.nome" required />
+        </div>
+        <div class="input-group">
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" v-model="initial.email" required />
+        </div>
+        <div class="input-group">
+            <label for="telefone">Telefone</label>
+            <input type="tel" name="telefone" id="telefone" v-model="initial.telefone" required />
+        </div>
+        <div class="input-group">
+            <label for="historico">Fale um pouco sobre o seu momento atual</label>
+            <textarea name="historico" id="historico" v-model="initial.historico"></textarea>
+        </div>
+        <div class="input-group">
+            <button type="submit">Ligamos para você</button>
+        </div>
+    </form>
+
 </template>
 
 <style scoped>
-.fale-conosco {
-    background-color: #40f99b;
-}
-
 .fale-com-especialista__contato {
     position: relative;
     background-color: #fff;
